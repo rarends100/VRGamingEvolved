@@ -1,0 +1,6 @@
+1. Create project
+2. Add packages with NuGet
+3. Create game and Customer models
+4. Create RoleController, and context classes for game and customer models
+5. Generate Roles and create logins for each role in an automated fasion
+6. 
