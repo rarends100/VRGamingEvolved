@@ -51,7 +51,7 @@ namespace VRGamingEvolved.Controllers
 
                             break;
                         case "Employee":
-                            user.UserName = "Emplyee";
+                            user.UserName = "Employee";
                             user.Email = "Employee@VRGamesEvolved.com";
 
                             break;
@@ -80,7 +80,7 @@ namespace VRGamingEvolved.Controllers
 
 
 
-            return View("CreateInitUsersAndRoles.cshtml"); //TODO: Not going to correct page.
+            return View(); //TODO: Not going to correct page.
         }
     }
 }
