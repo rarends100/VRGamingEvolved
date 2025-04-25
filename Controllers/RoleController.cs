@@ -64,23 +64,25 @@ namespace VRGamingEvolved.Controllers
                         var addRole_Result = await _userManager.AddToRoleAsync(user, role);
                         ViewData[role + "Message"] =
                             String.Format("{0} created and user {1} created", role, user.UserName); //Will only ever be one of these messages for each roll processed.
-
+                        
                     }
                     else
                     {
                         ViewData[role + "Message"] = String.Format("Problem Creating the user {0}", user.UserName);
+                        
                     }
 
                 }
                 else
                 {
                     ViewData[role + "Message"] = String.Format("The {0} roles already exist.", role);
+                    
                 }
             }
 
 
 
-            return View(); //TODO: Not going to correct page.
+            return View("CreateRolesandDefaultUsers"); //TODO: Not going to correct page.
         }
     }
 }

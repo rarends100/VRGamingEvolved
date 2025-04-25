@@ -17,7 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backups", "Backups", "{0225
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ToDo", "ToDo", "{6E09084A-8A13-438F-AB19-EECF706A138D}"
 	ProjectSection(SolutionItems) = preProject
-		..\..\..\..\..\..\Downloads\VR Gaming Evolved - User Stories - Nick-Robert.txt = ..\..\..\..\..\..\Downloads\VR Gaming Evolved - User Stories - Nick-Robert.txt
+		..\..\Downloads\VR Gaming Evolved - User Stories - Nick-Robert.txt = ..\..\Downloads\VR Gaming Evolved - User Stories - Nick-Robert.txt
 	EndProjectSection
 EndProject
 Global
