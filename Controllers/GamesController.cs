@@ -47,8 +47,8 @@ namespace VRGamingEvolved.Controllers
         }
 
         // GET: Games/Create
-        [Authorize(Roles = "Admin")]
-        [Authorize(Roles = "Employee")]
+        [Authorize(Roles = "Admin, Employee")]
+        //[Authorize(Roles = "Employee")]
         public IActionResult Create()
         {
             return View();
