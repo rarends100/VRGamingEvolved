@@ -59,8 +59,7 @@ namespace VRGamingEvolved.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
-        [Authorize(Roles = "Employee")]
+        [Authorize(Roles = "Admin, Employee")]
         public async Task<IActionResult> Create([Bind("GameId,GameName,GameVersion,GameDescription")] Game game)
         {
             if (ModelState.IsValid)
@@ -73,8 +72,9 @@ namespace VRGamingEvolved.Controllers
         }
 
         // GET: Games/Edit/5
-        [Authorize(Roles = "Admin")]
-        [Authorize(Roles = "Employee")]
+        /*[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Employee")] doing it this way treats it as and, no or*/
+        [Authorize(Roles = "Admin, Employee")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Game == null)
@@ -95,8 +95,7 @@ namespace VRGamingEvolved.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
-        [Authorize(Roles = "Employee")]
+        [Authorize(Roles = "Admin, Employee")]
         public async Task<IActionResult> Edit(int id, [Bind("GameId,GameName,GameVersion,GameDescription")] Game game)
         {
             if (id != game.GameId)
@@ -128,8 +127,7 @@ namespace VRGamingEvolved.Controllers
         }
 
         // GET: Games/Delete/5
-        [Authorize(Roles = "Admin")]
-        [Authorize(Roles = "Employee")]
+        [Authorize(Roles = "Admin, Employee")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Game == null)
@@ -150,8 +148,7 @@ namespace VRGamingEvolved.Controllers
         // POST: Games/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
-        [Authorize(Roles = "Employee")]
+        [Authorize(Roles = "Admin, Employee")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (_context.Game == null)
