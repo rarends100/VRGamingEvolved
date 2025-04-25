@@ -41,17 +41,17 @@ namespace VRGamingEvolved.Controllers
                     switch (role)
                     {
                         case "Admin":
-                            user.UserName = "Geralt";
+                            user.UserName = "Geralt@VRGamesEvolved.com";
                             user.Email = "Geralt@VRGamesEvolved.com";
 
                             break;
                         case "Customer":
-                            user.UserName = "firstCustomer";
+                            user.UserName = "firstCustomer@VRGamesEvolved.com";
                             user.Email = "firstCustomer@VRGamesEvolved.com";
 
                             break;
                         case "Employee":
-                            user.UserName = "Employee";
+                            user.UserName = "Employee@VRGamesEvolved.com";
                             user.Email = "Employee@VRGamesEvolved.com";
 
                             break;
