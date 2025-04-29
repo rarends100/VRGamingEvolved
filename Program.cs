@@ -26,6 +26,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => {
     options.Password.RequireLowercase = true;
     options.Password.RequireUppercase = true;
     options.Password.RequiredLength = 8;
+    
 
     //may modify if needed - RA
 })
