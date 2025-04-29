@@ -7,5 +7,8 @@ namespace VRGamingEvolved.Models
         // Inherits all IdentityUser properties, so I do not need to make any adjustments.
         /*Properites
          UserName, Password, ConfirmPassword, Email, EmailConfirmed, PhoneNumber, PhoneNumberConfirmed*/
+
+        public string UserType { get; set; }
+
     }
 }

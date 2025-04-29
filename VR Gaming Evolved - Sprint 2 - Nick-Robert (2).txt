@@ -24,19 +24,23 @@ Sprint 1:
  9. As an "Employee", I want to be able to delete games from the library. || Done Robert |
 
  10. As a "Admin", I want to make sure that the pattern an employee can enter game versions is xx.xxxx. ||  Done Robert |
+ 13. As an "Admin", I want to be able to delete games from library. Done 
 
 Percentage that each user is responsible for completing: Robert = 50%, Nick = 50%
 Sprint 2:
 ------------------------------------------------------------------------
 From P1
- 5. As an "Admin", I want to be able to login, with extra privileges.||  Somewhat done Robert |
-  2. As a "Admin", I want to be able to view all customers. || In Progress Robert |
+As an "Admin", I want to be able to login, with extra privileges.||  Somewhat done Robert, will add other privs as we go most likely, so done but not fully done. |
+ 
+ As a "Admin", I want to be able to view all customers. || In Progress Nick |
  As a "Customer", I want to be able buy games. ||  InProgress Robert |
+
+ ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
  
  9. As a "Customer", I want to update my cart.
  10. As a "Customer", I want to delete my cart.
  11. As a "Customer",  I would like to be able to leave a review.
  12. As an "Admin", I would like to be able to comment on the customers review.
- 13. As an "Admin", I want to be able to delete games from library.
+
  14. As a "Customer", I want to be able to track my purchases.
  15. As a "Customer", I would like to be able to request a refund.

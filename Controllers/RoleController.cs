@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
+using VRGamingEvolved.Models;
 
 namespace VRGamingEvolved.Controllers
 {
@@ -35,7 +36,7 @@ namespace VRGamingEvolved.Controllers
                     newRoleName.Name = role;
                     await _roleManager.CreateAsync(newRoleName);
 
-                    var user = new IdentityUser();
+                    var user = new Users();
                     string password = "Test$pass1234";
 
                     switch (role)
@@ -43,16 +44,19 @@ namespace VRGamingEvolved.Controllers
                         case "Admin":
                             user.UserName = "Geralt@VRGamesEvolved.com";
                             user.Email = "Geralt@VRGamesEvolved.com";
+                            user.UserType = "Admin";
 
                             break;
                         case "Customer":
                             user.UserName = "firstCustomer@VRGamesEvolved.com";
                             user.Email = "firstCustomer@VRGamesEvolved.com";
+                            user.UserType = "Customer";
 
                             break;
                         case "Employee":
                             user.UserName = "Employee@VRGamesEvolved.com";
                             user.Email = "Employee@VRGamesEvolved.com";
+                            user.UserType = "Employee";
 
                             break;
                     }
