@@ -11,7 +11,16 @@ namespace VRGamingEvolved.Data
         public DbSet<Game>? Game { get; set; }
         public DbSet<Users>? customers { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
 
-        protected override
+            builder.Entity<Game>().HasData(
+
+                new Game { GameId = 1, GameName = "Gorilla Tag", GameVersion = "2.0", GameDescription = "Gorillas Playing Tag"}
+
+                );
+        }
+
     }
 }
