@@ -48,7 +48,6 @@ namespace VRGamingEvolved.Controllers
 
         // GET: Games/Create
         [Authorize(Roles = "Admin, Employee")]
-        //[Authorize(Roles = "Employee")]
         public IActionResult Create()
         {
             return View();
@@ -72,8 +71,7 @@ namespace VRGamingEvolved.Controllers
         }
 
         // GET: Games/Edit/5
-        /*[Authorize(Roles = "Admin")]
-        [Authorize(Roles = "Employee")] doing it this way treats it as and, no or*/
+        
         [Authorize(Roles = "Admin, Employee")]
         public async Task<IActionResult> Edit(int? id)
         {

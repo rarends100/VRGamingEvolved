@@ -1,0 +1,26 @@
+﻿@model List<VRGamingEvolved.Models.Users>
+
+@{
+    ViewData["Title"] = "All Customers";
+}
+
+<h1>All Customers</h1>
+
+@if (!User.Equals("Admin") && !User.Equals("Employee"))
+{
+    @foreach(var user in Model){
+    <div>
+    <dl class="row">
+        <dt class="col-sm-2">
+           @user.UserName
+        </dt>
+        <dd class="col-sm-10">
+            @user.UserType 
+    </dl>
+</div>
+    }
+}
+else
+{
+    <h3>No customers present!</h3>
+}
