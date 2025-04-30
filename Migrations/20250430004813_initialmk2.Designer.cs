@@ -9,11 +9,11 @@ using VRGamingEvolved.Data;
 
 #nullable disable
 
-namespace VRGamingEvolved.Data.Migrations
+namespace VRGamingEvolved.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250424213539_AddIdentityTableCustomers2")]
-    partial class AddIdentityTableCustomers2
+    [Migration("20250430004813_initialmk2")]
+    partial class initialmk2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -234,36 +234,53 @@ namespace VRGamingEvolved.Data.Migrations
 
             modelBuilder.Entity("VRGamingEvolved.Models.Game", b =>
                 {
-                    b.Property<int>("GameId")
+                    b.Property<int>("ProductId")
                         .ValueGeneratedOnAdd()
-                        .HasMaxLength(6)
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("GameId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductId"), 1L, 1);
 
                     b.Property<string>("GameDescription")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("GameName")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
                     b.Property<string>("GameVersion")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("GameId");
+                    b.Property<string>("ProductName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("ProductType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ProductId");
 
                     b.ToTable("Game");
+
+                    b.HasData(
+                        new
+                        {
+                            ProductId = 1,
+                            GameDescription = "Gorillas Playing Tag",
+                            GameVersion = "2.0",
+                            ProductName = "Gorrilla Tag",
+                            ProductType = "Game"
+                        });
                 });
 
-            modelBuilder.Entity("VRGamingEvolved.Models.Customer", b =>
+            modelBuilder.Entity("VRGamingEvolved.Models.Users", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
-                    b.HasDiscriminator().HasValue("Customer");
+                    b.Property<string>("UserType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasDiscriminator().HasValue("Users");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

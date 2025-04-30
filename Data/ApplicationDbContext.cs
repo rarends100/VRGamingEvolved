@@ -17,7 +17,12 @@ namespace VRGamingEvolved.Data
 
             builder.Entity<Game>().HasData(
 
-                new Game { GameId = 1, GameName = "Gorilla Tag", GameVersion = "2.0", GameDescription = "Gorillas Playing Tag"}
+                new Game {
+                    ProductId = 1,
+                    ProductType = "Game",
+                    ProductName = "Gorrilla Tag",
+                    GameVersion = "2.0",
+                    GameDescription = "Gorillas Playing Tag" }
 
                 );
         }
