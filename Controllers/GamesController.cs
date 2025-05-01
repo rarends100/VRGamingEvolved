@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -20,7 +19,6 @@ namespace VRGamingEvolved.Controllers
         {
             _context = context;
         }
-
 
         // GET: Games
         public async Task<IActionResult> Index()
@@ -48,8 +46,8 @@ namespace VRGamingEvolved.Controllers
             return View(game);
         }
 
-        // GET: Games/Create
         [Authorize(Roles = "Admin, Employee")]
+        // GET: Games/Create
         public IActionResult Create()
         {
             return View();
@@ -61,7 +59,7 @@ namespace VRGamingEvolved.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin, Employee")]
-        public async Task<IActionResult> Create([Bind("GameVersion,GameDescription,ProductId,ProductName,ProductType")] Game game)
+        public async Task<IActionResult> Create([Bind("GameVersion,GameDescription,ProductId,ProductName,ProductType,Cost,Sell,FileName")] Game game)
         {
             if (ModelState.IsValid)
             {
@@ -72,8 +70,8 @@ namespace VRGamingEvolved.Controllers
             return View(game);
         }
 
-        // GET: Games/Edit/5
         [Authorize(Roles = "Admin, Employee")]
+        // GET: Games/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Game == null)
@@ -95,7 +93,7 @@ namespace VRGamingEvolved.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin, Employee")]
-        public async Task<IActionResult> Edit(int id, [Bind("GameVersion,GameDescription,ProductId,ProductName,ProductType")] Game game)
+        public async Task<IActionResult> Edit(int id, [Bind("GameVersion,GameDescription,ProductId,ProductName,ProductType,Cost,Sell,FileName")] Game game)
         {
             if (id != game.ProductId)
             {

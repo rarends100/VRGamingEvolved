@@ -21,6 +21,9 @@ namespace VRGamingEvolved.Data
                     ProductId = 1,
                     ProductType = "Game",
                     ProductName = "Gorrilla Tag",
+                    Cost = 2.00m,
+                    Sell = 5.00m,
+                    FileName = "", //May implement file names and therefor images if time permits
                     GameVersion = "2.0",
                     GameDescription = "Gorillas Playing Tag" }
 

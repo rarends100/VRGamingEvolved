@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace VRGamingEvolved.Models
 {
@@ -14,7 +16,20 @@ namespace VRGamingEvolved.Models
         [Required(ErrorMessage = "You must enter a product type.")]
         public string ProductType { get; set; }
 
-        
+        [Required(ErrorMessage = "You must enter a cost for the product.")]
+        [DisplayFormat(DataFormatString = "{0:C}")]
+        public decimal Cost { get; set; }
+
+
+        [Required(ErrorMessage = "You must enter a sell amount for the product.")]
+        [DisplayFormat(DataFormatString = "{0:C}")]
+
+        public decimal Sell {  get; set; }
+
+        public string? FileName { get; set; }
+
+        //May integrate categories if we have time
+
 
     }
 }
