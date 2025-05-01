@@ -167,5 +167,21 @@ namespace VRGamingEvolved.Controllers
         {
           return (_context.Game?.Any(e => e.GameId == id)).GetValueOrDefault();
         }
+        [Authorize(Roles = "Admin, Employee")]
+        public IActionResult AllCustomers()
+        {
+            if (_context.customers == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+
+                List<Users> allCustomers = _context.customers.ToList();
+                return View(allCustomers);
+            }
+            
+            
+        }
     }
 }

@@ -6,16 +6,17 @@
 
 <h1>All Customers</h1>
 
-@if (!User.Equals("Admin") && !User.Equals("Employee"))
+@if (User.IsInRole("Admin") || User.IsInRole("Employee"))
 {
     @foreach(var user in Model){
     <div>
     <dl class="row">
         <dt class="col-sm-2">
-           @user.UserName
+         @Html.DisplayNameFor(model => user.UserName)
         </dt>
         <dd class="col-sm-10">
-            @user.UserType 
+         @Html.DisplayFor(model => user.UserName)
+         </dd>
     </dl>
 </div>
     }

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using VRGamingEvolved.Models;
 using System.Security.Cryptography.X509Certificates;
+using SQLitePCL;
 
 namespace VRGamingEvolved.Controllers
 {
@@ -91,9 +92,6 @@ namespace VRGamingEvolved.Controllers
             return View("CreateRolesandDefaultUsers"); //TODO: Not going to correct page.
         }
 
-        public IActionResult AllCustomers()
-        {
-            return View();
-        }
+        
     }
 }
