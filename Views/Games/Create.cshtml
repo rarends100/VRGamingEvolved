@@ -1,7 +1,7 @@
 ﻿@model VRGamingEvolved.Models.Game
 
 @{
-    ViewData["Title"] = "Create Game";
+    ViewData["Title"] = "Create";
 }
 
 <h1>Create</h1>
@@ -13,11 +13,6 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="GameName" class="control-label"></label>
-                <input asp-for="GameName" class="form-control" />
-                <span asp-validation-for="GameName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="GameVersion" class="control-label"></label>
                 <input asp-for="GameVersion" class="form-control" />
                 <span asp-validation-for="GameVersion" class="text-danger"></span>
@@ -26,6 +21,31 @@
                 <label asp-for="GameDescription" class="control-label"></label>
                 <input asp-for="GameDescription" class="form-control" />
                 <span asp-validation-for="GameDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductName" class="control-label"></label>
+                <input asp-for="ProductName" class="form-control" />
+                <span asp-validation-for="ProductName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductType" class="control-label"></label>
+                <input asp-for="ProductType" class="form-control" />
+                <span asp-validation-for="ProductType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cost" class="control-label"></label>
+                <input asp-for="Cost" class="form-control" />
+                <span asp-validation-for="Cost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sell" class="control-label"></label>
+                <input asp-for="Sell" class="form-control" />
+                <span asp-validation-for="Sell" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FileName" class="control-label"></label>
+                <input asp-for="FileName" class="form-control" />
+                <span asp-validation-for="FileName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

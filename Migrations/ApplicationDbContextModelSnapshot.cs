@@ -3,19 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VRGamingEvolved.Data;
 
 #nullable disable
 
-namespace VRGamingEvolved.Data.Migrations
+namespace VRGamingEvolved.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250424213539_AddIdentityTableCustomers2")]
-    partial class AddIdentityTableCustomers2
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -234,36 +232,65 @@ namespace VRGamingEvolved.Data.Migrations
 
             modelBuilder.Entity("VRGamingEvolved.Models.Game", b =>
                 {
-                    b.Property<int>("GameId")
+                    b.Property<int>("ProductId")
                         .ValueGeneratedOnAdd()
-                        .HasMaxLength(6)
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("GameId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductId"), 1L, 1);
+
+                    b.Property<decimal>("Cost")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("FileName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("GameDescription")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("GameName")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
                     b.Property<string>("GameVersion")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("GameId");
+                    b.Property<string>("ProductName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("ProductType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Sell")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("ProductId");
 
                     b.ToTable("Game");
+
+                    b.HasData(
+                        new
+                        {
+                            ProductId = 1,
+                            Cost = 2.00m,
+                            FileName = "",
+                            GameDescription = "Gorillas Playing Tag",
+                            GameVersion = "2.0",
+                            ProductName = "Gorrilla Tag",
+                            ProductType = "Game",
+                            Sell = 5.00m
+                        });
                 });
 
-            modelBuilder.Entity("VRGamingEvolved.Models.Customer", b =>
+            modelBuilder.Entity("VRGamingEvolved.Models.Users", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
-                    b.HasDiscriminator().HasValue("Customer");
+                    b.Property<string>("UserType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasDiscriminator().HasValue("Users");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

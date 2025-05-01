@@ -37,7 +37,7 @@ namespace VRGamingEvolved.Controllers
             }
 
             var game = await _context.Game
-                .FirstOrDefaultAsync(m => m.GameId == id);
+                .FirstOrDefaultAsync(m => m.ProductId == id);
             if (game == null)
             {
                 return NotFound();
@@ -46,8 +46,8 @@ namespace VRGamingEvolved.Controllers
             return View(game);
         }
 
-        // GET: Games/Create
         [Authorize(Roles = "Admin, Employee")]
+        // GET: Games/Create
         public IActionResult Create()
         {
             return View();
@@ -59,20 +59,19 @@ namespace VRGamingEvolved.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin, Employee")]
-        public async Task<IActionResult> Create([Bind("GameId,GameName,GameVersion,GameDescription")] Game game)
+        public async Task<IActionResult> Create([Bind("GameVersion,GameDescription,ProductId,ProductName,ProductType,Cost,Sell,FileName")] Game game)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(game);
                 await _context.SaveChangesAsync();
-                //RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index));
             }
             return View(game);
         }
 
-        // GET: Games/Edit/5
-        
         [Authorize(Roles = "Admin, Employee")]
+        // GET: Games/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Game == null)
@@ -94,9 +93,9 @@ namespace VRGamingEvolved.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin, Employee")]
-        public async Task<IActionResult> Edit(int id, [Bind("GameId,GameName,GameVersion,GameDescription")] Game game)
+        public async Task<IActionResult> Edit(int id, [Bind("GameVersion,GameDescription,ProductId,ProductName,ProductType,Cost,Sell,FileName")] Game game)
         {
-            if (id != game.GameId)
+            if (id != game.ProductId)
             {
                 return NotFound();
             }
@@ -110,7 +109,7 @@ namespace VRGamingEvolved.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!GameExists(game.GameId))
+                    if (!GameExists(game.ProductId))
                     {
                         return NotFound();
                     }
@@ -134,7 +133,7 @@ namespace VRGamingEvolved.Controllers
             }
 
             var game = await _context.Game
-                .FirstOrDefaultAsync(m => m.GameId == id);
+                .FirstOrDefaultAsync(m => m.ProductId == id);
             if (game == null)
             {
                 return NotFound();
@@ -165,7 +164,7 @@ namespace VRGamingEvolved.Controllers
 
         private bool GameExists(int id)
         {
-          return (_context.Game?.Any(e => e.GameId == id)).GetValueOrDefault();
+          return (_context.Game?.Any(e => e.ProductId == id)).GetValueOrDefault();
         }
         [Authorize(Roles = "Admin, Employee")]
         public IActionResult AllCustomers()
