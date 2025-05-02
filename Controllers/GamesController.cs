@@ -63,6 +63,14 @@ namespace VRGamingEvolved.Controllers
         {
             if (ModelState.IsValid)
             {
+               // var myObject = new User();
+                Type objectType = game.GetType();
+
+                Console.WriteLine(objectType.Name);
+
+
+                game.ProductType = objectType.Name;
+               
                 _context.Add(game);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
