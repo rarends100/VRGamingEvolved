@@ -1,0 +1,31 @@
+﻿
+
+@{
+    ViewData["Title"] = "All Customers";
+}
+
+<h1>All Customers</h1>
+
+@if (User.IsInRole("Admin") || User.IsInRole("Employee"))
+{
+    @foreach(var user in Model){
+    <div>
+    <dl class="row">
+        <table>
+            <tr>
+                <th>User Name</th>
+                <th>User Email</th>
+            </tr>
+            <tr>
+                <td>@user.UserName</td>
+                <td>@user.Email</td>
+            </tr>
+            
+        </table>
+</div>
+    }
+}
+else
+{
+    <h3>No customers present!</h3>
+}

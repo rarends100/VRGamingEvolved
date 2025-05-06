@@ -1,4 +1,4 @@
-﻿@model IEnumerable<VRGamingEvolved.Models.Game>
+﻿@model IEnumerable<VRGamingEvolved.Models.Product>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,16 +13,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.GameVersion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.GameDescription)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.ProductName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductType)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Cost)
@@ -40,16 +31,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.GameVersion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GameDescription)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.ProductName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductType)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Cost)

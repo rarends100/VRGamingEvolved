@@ -13,9 +13,6 @@ namespace VRGamingEvolved.Models
         [StringLength(100, ErrorMessage = "Product name must not be greater than 50 characters in length.")]
         public string ProductName { get; set; }
 
-        [Required(ErrorMessage = "You must enter a product type.")]
-        public string ProductType { get; set; }
-
         [Required(ErrorMessage = "You must enter a cost for the product.")]
         [DisplayFormat(DataFormatString = "{0:C}")]
         [Column(TypeName = "decimal(8,2)")]

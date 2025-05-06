@@ -7,9 +7,14 @@ namespace VRGamingEvolved.Data
     public class ApplicationDbContext : IdentityDbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-            : base(options){}
+            : base(options) { }
+
+        /// <summary>
+        /// https://learn.microsoft.com/en-us/ef/core/modeling/inheritance
+        /// </summary>
+        public DbSet<Product> products { get; set; }
         public DbSet<Game>? games { get; set; }
-        public DbSet<Users>? customers { get; set; }
+        public DbSet<Users>? users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -17,15 +22,16 @@ namespace VRGamingEvolved.Data
 
             builder.Entity<Game>().HasData(
 
-                new Game {
+                new Game
+                {
                     ProductId = 1,
-                    ProductType = "Game",
                     ProductName = "Gorrilla Tag",
                     Cost = 2.00m,
                     Sell = 5.00m,
                     FileName = "", //May implement file names and therefor images if time permits
                     GameVersion = "2.0",
-                    GameDescription = "Gorillas Playing Tag" }
+                    GameDescription = "Gorillas Playing Tag"
+                }
 
                 );
         }

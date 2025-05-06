@@ -11,99 +11,94 @@ using VRGamingEvolved.Models;
 
 namespace VRGamingEvolved.Controllers
 {
-    public class GamesController : Controller
+    public class ProductsController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public GamesController(ApplicationDbContext context)
+        public ProductsController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Games
+        // GET: Products
         public async Task<IActionResult> Index()
         {
-              return _context.games != null ? 
-                          View(await _context.games.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.Game'  is null.");
+              return _context.products != null ? 
+                          View(await _context.products.ToListAsync()) :
+                          Problem("Entity set 'ApplicationDbContext.products'  is null.");
         }
 
-        // GET: Games/Details/5
+        public async Task<IActionResult> GamesIndex()
+        {
+            return _context.games != null ? //This should work since a game is instantiated as a product, fingeers crossed
+                        View(await _context.games.ToListAsync()) :
+                        Problem("Entity set 'ApplicationDbContext.products'  is null.");
+        }
+
+        // GET: Products/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.games == null)
+            if (id == null || _context.products == null)
             {
                 return NotFound();
             }
 
-            var game = await _context.games
+            var product = await _context.products
                 .FirstOrDefaultAsync(m => m.ProductId == id);
-            if (game == null)
+            if (product == null)
             {
                 return NotFound();
             }
 
-            return View(game);
+            return View(product);
         }
 
-        [Authorize(Roles = "Admin, Employee")]
-        // GET: Games/Create
+        // GET: Products/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Games/Create
+        // POST: Products/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin, Employee")]
-        public async Task<IActionResult> Create([Bind("GameVersion,GameDescription,ProductId,ProductName,ProductType,Cost,Sell,FileName")] Game game)
+        public async Task<IActionResult> Create([Bind("ProductId,ProductName,Cost,Sell,FileName")] Product product)
         {
             if (ModelState.IsValid)
             {
-               // var myObject = new User();
-                Type objectType = game.GetType();
-
-                Console.WriteLine(objectType.Name);
-
-
-                game.ProductType = objectType.Name;
-               
-                _context.Add(game);
+                _context.Add(product);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(game);
+            return View(product);
         }
 
-        [Authorize(Roles = "Admin, Employee")]
-        // GET: Games/Edit/5
+        // GET: Products/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.games == null)
+            if (id == null || _context.products == null)
             {
                 return NotFound();
             }
 
-            var game = await _context.games.FindAsync(id);
-            if (game == null)
+            var product = await _context.products.FindAsync(id);
+            if (product == null)
             {
                 return NotFound();
             }
-            return View(game);
+            return View(product);
         }
 
-        // POST: Games/Edit/5
+        // POST: Products/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin, Employee")]
-        public async Task<IActionResult> Edit(int id, [Bind("GameVersion,GameDescription,ProductId,ProductName,ProductType,Cost,Sell,FileName")] Game game)
+        public async Task<IActionResult> Edit(int id, [Bind("ProductId,ProductName,Cost,Sell,FileName")] Product product)
         {
-            if (id != game.ProductId)
+            if (id != product.ProductId)
             {
                 return NotFound();
             }
@@ -112,12 +107,12 @@ namespace VRGamingEvolved.Controllers
             {
                 try
                 {
-                    _context.Update(game);
+                    _context.Update(product);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!GameExists(game.ProductId))
+                    if (!ProductExists(product.ProductId))
                     {
                         return NotFound();
                     }
@@ -128,68 +123,51 @@ namespace VRGamingEvolved.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(game);
+            return View(product);
         }
 
-        // GET: Games/Delete/5
-        [Authorize(Roles = "Admin, Employee")]
+        // GET: Products/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.games == null)
+            if (id == null || _context.products == null)
             {
                 return NotFound();
             }
 
-            var game = await _context.games
+            var product = await _context.products
                 .FirstOrDefaultAsync(m => m.ProductId == id);
-            if (game == null)
+            if (product == null)
             {
                 return NotFound();
             }
 
-            return View(game);
+            return View(product);
         }
 
-        // POST: Games/Delete/5
+        // POST: Products/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin, Employee")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.games == null)
+            if (_context.products == null)
             {
-                return Problem("Entity set 'ApplicationDbContext.Game'  is null.");
+                return Problem("Entity set 'ApplicationDbContext.products'  is null.");
             }
-            var game = await _context.games.FindAsync(id);
-            if (game != null)
+            var product = await _context.products.FindAsync(id);
+            if (product != null)
             {
-                _context.games.Remove(game);
+                _context.products.Remove(product);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool GameExists(int id)
+        private bool ProductExists(int id)
         {
-          return (_context.games?.Any(e => e.ProductId == id)).GetValueOrDefault();
-        }
-        [Authorize(Roles = "Admin, Employee")]
-        public IActionResult AllCustomers()
-        {
-            if (_context.customers == null)
-            {
-                return NotFound();
-            }
-            else
-            {
-
-                List<Users> allCustomers = _context.customers.ToList();
-                return View(allCustomers);
-            }
-            
-            
+          return (_context.products?.Any(e => e.ProductId == id)).GetValueOrDefault();
         }
 
+       
     }
 }
