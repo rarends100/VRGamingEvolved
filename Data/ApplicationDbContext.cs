@@ -8,7 +8,7 @@ namespace VRGamingEvolved.Data
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options){}
-        public DbSet<Game>? Game { get; set; }
+        public DbSet<Game>? games { get; set; }
         public DbSet<Users>? customers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)

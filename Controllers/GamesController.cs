@@ -23,20 +23,20 @@ namespace VRGamingEvolved.Controllers
         // GET: Games
         public async Task<IActionResult> Index()
         {
-              return _context.Game != null ? 
-                          View(await _context.Game.ToListAsync()) :
+              return _context.games != null ? 
+                          View(await _context.games.ToListAsync()) :
                           Problem("Entity set 'ApplicationDbContext.Game'  is null.");
         }
 
         // GET: Games/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Game == null)
+            if (id == null || _context.games == null)
             {
                 return NotFound();
             }
 
-            var game = await _context.Game
+            var game = await _context.games
                 .FirstOrDefaultAsync(m => m.ProductId == id);
             if (game == null)
             {
@@ -82,12 +82,12 @@ namespace VRGamingEvolved.Controllers
         // GET: Games/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Game == null)
+            if (id == null || _context.games == null)
             {
                 return NotFound();
             }
 
-            var game = await _context.Game.FindAsync(id);
+            var game = await _context.games.FindAsync(id);
             if (game == null)
             {
                 return NotFound();
@@ -135,12 +135,12 @@ namespace VRGamingEvolved.Controllers
         [Authorize(Roles = "Admin, Employee")]
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Game == null)
+            if (id == null || _context.games == null)
             {
                 return NotFound();
             }
 
-            var game = await _context.Game
+            var game = await _context.games
                 .FirstOrDefaultAsync(m => m.ProductId == id);
             if (game == null)
             {
@@ -156,14 +156,14 @@ namespace VRGamingEvolved.Controllers
         [Authorize(Roles = "Admin, Employee")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Game == null)
+            if (_context.games == null)
             {
                 return Problem("Entity set 'ApplicationDbContext.Game'  is null.");
             }
-            var game = await _context.Game.FindAsync(id);
+            var game = await _context.games.FindAsync(id);
             if (game != null)
             {
-                _context.Game.Remove(game);
+                _context.games.Remove(game);
             }
             
             await _context.SaveChangesAsync();
@@ -172,7 +172,7 @@ namespace VRGamingEvolved.Controllers
 
         private bool GameExists(int id)
         {
-          return (_context.Game?.Any(e => e.ProductId == id)).GetValueOrDefault();
+          return (_context.games?.Any(e => e.ProductId == id)).GetValueOrDefault();
         }
         [Authorize(Roles = "Admin, Employee")]
         public IActionResult AllCustomers()
