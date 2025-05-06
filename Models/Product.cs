@@ -18,12 +18,13 @@ namespace VRGamingEvolved.Models
 
         [Required(ErrorMessage = "You must enter a cost for the product.")]
         [DisplayFormat(DataFormatString = "{0:C}")]
+        [Column(TypeName = "decimal(8,2)")]
         public decimal Cost { get; set; }
 
 
         [Required(ErrorMessage = "You must enter a sell amount for the product.")]
         [DisplayFormat(DataFormatString = "{0:C}")]
-
+        [Column(TypeName = "decimal(8,2)")]
         public decimal Sell {  get; set; }
 
         public string? FileName { get; set; }
