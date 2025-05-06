@@ -168,6 +168,44 @@ namespace VRGamingEvolved.Controllers
           return (_context.products?.Any(e => e.ProductId == id)).GetValueOrDefault();
         }
 
-       
+        public IActionResult AddToCart(int id, string returnUrl)
+        {
+            Product product = _context.products.FirstOrDefault(p => p.ProductId == id);
+
+            Cart cart = null;
+
+            cart = GetCart();
+
+            cart.AddItem(product, 1);
+
+
+
+            SaveCart(cart);
+
+            return View("ShowCart", cart);
+
+        }
+
+        private void SaveCart(Cart cart)
+        {
+            HttpContext.Session.SetObject<Cart>("cart", cart);
+        }
+
+        private Cart? GetCart()
+        {
+            Cart cart = null;
+
+            if (HttpContext.Session.GetObject<Cart>("cart") == null)
+            {
+                cart = new Cart();
+            }
+            else
+            {
+                cart = HttpContext.Session.GetObject<Cart>("cart");
+            }
+
+            return cart;
+        }
+
     }
 }
