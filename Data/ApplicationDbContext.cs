@@ -30,7 +30,8 @@ namespace VRGamingEvolved.Data
                     Sell = 5.00m,
                     FileName = "", //May implement file names and therefor images if time permits
                     GameVersion = "2.0",
-                    GameDescription = "Gorillas Playing Tag"
+                    GameDescription = "Gorillas Playing Tag",
+                    Review = "This game is awesome!"
                 }
 
                 );

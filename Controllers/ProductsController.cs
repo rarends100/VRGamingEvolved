@@ -64,7 +64,7 @@ namespace VRGamingEvolved.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProductId,ProductName,Cost,Sell,FileName")] Product product)
+        public async Task<IActionResult> Create([Bind("ProductId,ProductName,Cost,Sell,FileName,Review")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -96,7 +96,7 @@ namespace VRGamingEvolved.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProductId,ProductName,Cost,Sell,FileName")] Product product)
+        public async Task<IActionResult> Edit(int id, [Bind("ProductId,ProductName,Cost,Sell,FileName,Review")] Product product)
         {
             if (id != product.ProductId)
             {

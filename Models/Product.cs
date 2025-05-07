@@ -26,6 +26,8 @@ namespace VRGamingEvolved.Models
 
         public string? FileName { get; set; }
 
+        public string? Review {  get; set; }
+
         //May integrate categories if we have time
 
 

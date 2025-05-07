@@ -10,8 +10,8 @@
 {
     @foreach(var user in Model){
     <div>
-    <dl class="row">
-        <table>
+    <table class="table">
+        <thead>
             <tr>
                 <th>User Name</th>
                 <th>User Email</th>
@@ -21,6 +21,7 @@
                 <td>@user.Email</td>
             </tr>
             
+        </thead>
         </table>
 </div>
     }
