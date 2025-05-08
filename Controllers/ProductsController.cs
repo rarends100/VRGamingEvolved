@@ -217,9 +217,10 @@ namespace VRGamingEvolved.Controllers
 
             cart.RemoveLine(product, 1);
 
-
-
             SaveCart(cart);
+
+
+            HttpContext.Session.Remove("cart");
 
             return View("ShowCart", cart);
 
