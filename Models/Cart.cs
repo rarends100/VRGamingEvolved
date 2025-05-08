@@ -23,7 +23,7 @@
 
         }
 
-        public virtual void RemoveLine(Product product) => lineCollection.RemoveAll(i => i.Product.ProductId == product.ProductId);
+        public virtual void RemoveLine(Product product, int v) => lineCollection.RemoveAll(i => i.Product.ProductId == product.ProductId);
 
         public virtual decimal ComputeTotalValue() => lineCollection.Sum(e => e.Product.Sell * e.Quantity);
 

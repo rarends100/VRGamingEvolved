@@ -3,6 +3,7 @@
 <h1>This is the contents of the cart</h1>
 
 <table class="table table-bordered table-striped">
+    
 
     <thead>
         <tr>
@@ -21,7 +22,7 @@
                 <td class="text-center"> @line.Quantity</td>
                 <td class="text-left"> @line.Product.ProductName</td>
                 <td class="text-right"> @line.Product.Sell.ToString("c")</td>
-
+                <td> <a asp-action="DeleteCart" asp-route-id="@line.Product.ProductId">Delete</a></td>
             </tr>
 
         }

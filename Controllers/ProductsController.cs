@@ -207,5 +207,23 @@ namespace VRGamingEvolved.Controllers
             return cart;
         }
 
+        public IActionResult DeleteCart(int id, string returnUrl)
+        {
+            Product product = _context.products.FirstOrDefault(p => p.ProductId == id);
+
+            Cart cart = null;
+
+            cart = GetCart();
+
+            cart.RemoveLine(product, 1);
+
+
+
+            SaveCart(cart);
+
+            return View("ShowCart", cart);
+
+        }
+
     }
 }
