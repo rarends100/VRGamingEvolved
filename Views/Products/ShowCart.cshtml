@@ -3,7 +3,7 @@
 <h1>This is the contents of the cart</h1>
 
 <table class="table table-bordered table-striped">
-    
+
 
     <thead>
         <tr>
@@ -16,6 +16,7 @@
     </thead>
 
     <tbody>
+
         @foreach (var line in Model.Lines)
         {
             <tr>
@@ -24,8 +25,8 @@
                 <td class="text-right"> @line.Product.Sell.ToString("c")</td>
                 <td> <a asp-action="DeleteCart" asp-route-id="@line.Product.ProductId">Delete</a></td>
             </tr>
-
         }
+
     </tbody>
     <tfoot>
         <tr>
@@ -34,3 +35,19 @@
         </tr>
     </tfoot>
 </table>
+
+<form asp-action="Thankyou" asp-controller="Purchases" method="POST">
+
+        <table>
+
+        <div class="list-inline">
+            <input type="hidden" name="PurchasedItems" value="@Model.Lines" />
+            <input type="hidden" name="PurchaseTotal" value="@Model.ComputeTotalValue()" />
+            <input type="submit" value="checkout" />
+
+        </div>
+    
+    </form>
+
+    
+   
