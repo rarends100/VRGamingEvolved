@@ -1,6 +1,6 @@
 ﻿@model VRGamingEvolved.Models.Purchase
 
-<h1>Thank you for you Purchase</h1>
+<h1>Thank you for your Purchase</h1>
 
 
 
@@ -17,8 +17,7 @@
     <tbody>
     <table class="table table-dark table-striped">
         
-            <tr>
-                <td>
+
                 @foreach (var line in Model.PurchasedItems)
                 {
                     <tr>
@@ -28,8 +27,7 @@
                         <td> <a asp-action="DeleteCart" asp-route-id="@line.Product.ProductId">Delete</a></td>
                     </tr>
                 }
-                </td>
-            </tr>
+
     </table>
 
 <form action=""></form>
